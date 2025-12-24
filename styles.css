@@ -91,6 +91,7 @@ a {
     margin-bottom: 1.5rem;
     background: linear-gradient(135deg, var(--text-main), var(--primary-color));
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none;
 }
@@ -428,4 +429,70 @@ footer {
         margin-top: 2rem;
         max-width: 250px;
     }
+}
+
+/* Custom Cursor */
+/* Dark Teal Arrow/Pointer using Data URIs */
+@media (hover: hover) and (pointer: fine) {
+    body {
+        /* Dark Teal Arrow */
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%230f766e" stroke="white" stroke-width="1" d="M2,2l0,18l4.5-5l3.5,7l3.5-1.5l-3.5-7l6,0L2,2z"/></svg>') 2 2, auto !important;
+    }
+
+    a,
+    button,
+    .btn,
+    .nav-link,
+    .project-card,
+    .skill-card,
+    .profile-pic {
+        /* Dark Teal Pointer (Hand) */
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%230f766e" stroke="white" stroke-width="1" d="M10.5,2h-1c-0.8,0-1.5,0.7-1.5,1.5v7H5.5c-0.8,0-1.5,0.7-1.5,1.5v3.5l4,8h9l2-8v-2h-3v-6c0-0.8-0.7-1.5-1.5-1.5h-1c-0.8,0-1.5,0.7-1.5,1.5v6h-1v-6C12,2.7,11.3,2,10.5,2z"/></svg>') 10 2, pointer !important;
+    }
+}
+
+.custom-cursor-outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 14px;
+    /* Much smaller */
+    height: 14px;
+    border: 2px solid #0f766e;
+    /* Thinner border for smaller size */
+    background-color: transparent;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+    box-sizing: border-box;
+    transition: all 0.1s ease-out;
+}
+
+.custom-cursor-inner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    /* Tiny dot */
+    height: 6px;
+    background-color: rgba(94, 234, 212, 0.4);
+    /* Transparent Teal */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10000;
+    transition: all 0.1s ease-out;
+}
+
+/* Hover States - Expand slightly */
+body.hovering .custom-cursor-outer {
+    width: 20px;
+    height: 20px;
+    border-color: #115e59;
+}
+
+body.hovering .custom-cursor-inner {
+    width: 10px;
+    height: 10px;
 }

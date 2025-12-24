@@ -59,4 +59,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Default View (Home) - processed by HTML structure, but good to reinforce
     // switchView('home'); 
+    // switchView('home'); 
+    
+    // Custom Cursor Logic
+    const cursorOuter = document.querySelector('.custom-cursor-outer');
+    const cursorInner = document.querySelector('.custom-cursor-inner');
+    const hoverLinks = document.querySelectorAll('a, button, .btn, .nav-link, .project-card, .skill-card, .profile-pic');
+
+    // Only activate on non-touch devices
+    if (matchMedia('(pointer:fine)').matches) {
+        document.addEventListener('mousemove', function(e) {
+            cursorOuter.style.top = e.clientY + 'px';
+            cursorOuter.style.left = e.clientX + 'px';
+            cursorInner.style.top = e.clientY + 'px';
+            cursorInner.style.left = e.clientX + 'px';
+        });
+
+        document.addEventListener('mousedown', function() {
+            cursorOuter.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            cursorInner.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        });
+
+        document.addEventListener('mouseup', function() {
+            cursorOuter.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursorInner.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+
+        hoverLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                document.body.classList.add('hovering');
+            });
+            link.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+        });
+    }
 });
